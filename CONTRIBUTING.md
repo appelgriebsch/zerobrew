@@ -31,11 +31,12 @@ Any changes you make that touch several crates should be organized properly. See
 
 ## General Development Workflow
 
-1. Fork the repo and create a new branch for your changes:
-   ```bash
-   git checkout -b feat/something
-   ```
+We prefer that a PR is linked to an open issue or previously discussed through other channels. 
+If you are introducing changes that aren't otherwise reported or tracking please either reach 
+out in the Discord to give us a heads up or open an issue first to discuss your changes.
 
+**General flow:**
+1. Fork the repo
 2. Make your changes and ensure, at the _least_:
    - Code is formatted: `cargo fmt --all`
    - No clippy warnings: `cargo clippy --workspace --all-targets -- -D warnings`
@@ -43,11 +44,8 @@ Any changes you make that touch several crates should be organized properly. See
 > [!NOTE] 
 > These will run in CI but it's best you clean up your code _before_ opening a PR to ensure a quick 
 > turnaround!
-
 3. Write tests for new functionality. Each module should have accompanying tests.
-
 4. Commit your changes with clear, descriptive commit messages (see below)
-
 5. Push to your fork and submit a pull request.
 
 ## Commit hygiene
@@ -60,6 +58,18 @@ for instance:
 ```bash
 fix(zb_cli): foo bar moo baz
 ```
+Allowed prefixes:
+```bash
+fix      # -> fixes a bug or regression
+feat     # -> new feature
+chore    # -> housekeeping (deps, typos in docs, etc.)
+tests    # -> added, changed or removed tests
+ci       # -> changes to ci
+refactor # -> refactored code
+perf     # -> performance related
+build    # -> changes to build system (i.e. ext deps, tooling, scripts, etc)
+```
+
 Generally speaking, we also ask that you please write isolated, [atomic commits](https://en.wikipedia.org/wiki/Atomic_commit). 
 This means if you are approaching a PR that touches various parts of the codebase for example, ensure that your commits
 are contained and cleanly seperated, properly describing/notating which commits belong where.
